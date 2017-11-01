@@ -8,6 +8,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
+import serveur.Couleur;
+import serveur.Point;
 import serveur.Sortie;
 
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ public class FenetreJFX implements Sortie {
 
     @Override
     public void afficher() {
-        fenetre.showAndWait();
+        fenetre.showAndWait(); //TODO: c'est pas possible d'afficher deux fenêtres en même temps à cause de ça
     }
 
     @Override

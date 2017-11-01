@@ -1,8 +1,5 @@
 package serveur;
 
-import affichage.Couleur;
-import affichage.Point;
-
 import java.util.ArrayList;
 
 public interface Sortie {

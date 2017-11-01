@@ -1,4 +1,4 @@
-package affichage;
+package serveur;
 
 public enum Couleur {
     BLACK,

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+//TODO: mettre des timeouts
+
 public class ServeurDessin {
     private final static int PORT = 1952;
     private GestionnaireSortie gestionnaireSortie;

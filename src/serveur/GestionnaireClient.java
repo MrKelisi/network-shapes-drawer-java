@@ -35,7 +35,7 @@ public class GestionnaireClient extends Thread {
                     break;
                 }
 
-                System.out.println(requete);
+                Traitement.instance().traitement().traiter(requete, fluxEntrant, sortie);
             }
         }
         catch (Exception e) {
