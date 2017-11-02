@@ -7,6 +7,7 @@ public class Traitement { //TODO: j'avais vraiment aucune idée pour cette class
     private Traitement() {
         traitement = new TraitementCercle(traitement);
         traitement = new TraitementPolygone(traitement);
+        traitement = new TraitementSegment(traitement);
     }
 
     public static Traitement instance() {
