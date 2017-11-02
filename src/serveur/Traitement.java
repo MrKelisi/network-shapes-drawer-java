@@ -6,7 +6,6 @@ public class Traitement { //TODO: j'avais vraiment aucune idée pour cette class
 
     private Traitement() {
         traitement = new TraitementCercle(null);
-        traitement = new TraitementForme(traitement);
     }
 
     public static Traitement instance() {

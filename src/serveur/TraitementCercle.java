@@ -10,7 +10,7 @@ class TraitementCercle extends TraitementReseauForme {
     }
 
     @Override
-    protected void traiterVariable(String nom, String valeur) {
+    protected void traiterVariableInterne(String nom, String valeur) {
         switch (nom) {
             case "origine":
                 origine = Variable.parsePoint(valeur);
@@ -27,7 +27,7 @@ class TraitementCercle extends TraitementReseauForme {
     }
 
     @Override
-    protected void afficher(Sortie sortie) {
+    protected void afficherInterne(Sortie sortie) {
         if(origine == null || rayon == null) {
             throw new NullPointerException("Pas assez de données"); //TODO: meilleure exception
         }

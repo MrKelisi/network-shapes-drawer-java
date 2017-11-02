@@ -3,9 +3,10 @@ package serveur;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public abstract class TraitementReseauForme extends TraitementReseauCOR {
+public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO: séparer le traitement des variables du stockage de la forme ?
     private final static String FIN_FORME = "FIN";
     private String nomForme;
+    private Couleur couleur;
 
     public TraitementReseauForme(TraitementReseauCOR next, String nomForme) {
         super(next);
@@ -43,6 +44,29 @@ public abstract class TraitementReseauForme extends TraitementReseauCOR {
         return true;
     }
 
-    protected abstract void traiterVariable(String nom, String valeur);
-    protected abstract void afficher(Sortie sortie);
+    private void traiterVariable(String nom, String valeur) {
+        switch (nom) {
+            case "couleur":
+                couleur = Variable.parseCouleur(valeur);
+                break;
+
+            default:
+                traiterVariableInterne(nom, valeur);
+                break;
+        }
+    }
+
+    private void afficher(Sortie sortie) {
+        if(couleur == null) {
+            throw new NullPointerException("Toutes les valeurs n'ont pas été données"); //TODO: meilleure exception
+        }
+
+        sortie.setCouleur(couleur);
+
+        afficherInterne(sortie);
+    }
+
+
+    protected abstract void traiterVariableInterne(String nom, String valeur);
+    protected abstract void afficherInterne(Sortie sortie);
 }

@@ -29,7 +29,7 @@ public class FenetreJFX implements Sortie {
 
     /**
      * Affiche la forme avec les bonnes propriétés
-     * @param forme Forme à afficher
+     * @param forme Forme à afficherInterne
      */
     private void afficher(Shape forme) {
         if(couleur != null) {
@@ -43,7 +43,7 @@ public class FenetreJFX implements Sortie {
 
     @Override
     public void afficher() {
-        fenetre.showAndWait(); //TODO: c'est pas possible d'afficher deux fenêtres en même temps à cause de ça
+        fenetre.showAndWait(); //TODO: c'est pas possible d'afficherInterne deux fenêtres en même temps à cause de ça
     }
 
     @Override
