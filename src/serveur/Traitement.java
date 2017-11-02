@@ -5,7 +5,8 @@ public class Traitement { //TODO: j'avais vraiment aucune idée pour cette class
     private TraitementReseauCOR traitement;
 
     private Traitement() {
-        traitement = new TraitementCercle(null);
+        traitement = new TraitementCercle(traitement);
+        traitement = new TraitementPolygone(traitement);
     }
 
     public static Traitement instance() {
