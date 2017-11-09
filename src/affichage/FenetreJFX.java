@@ -13,6 +13,7 @@ import serveur.Point;
 import serveur.Sortie;
 
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class FenetreJFX implements Sortie {
     private Stage fenetre;
@@ -43,7 +44,7 @@ public class FenetreJFX implements Sortie {
 
     @Override
     public void afficher() {
-        fenetre.showAndWait(); //TODO: c'est pas possible d'afficherInterne deux fenêtres en même temps à cause de ça
+        fenetre.showAndWait();
     }
 
     @Override

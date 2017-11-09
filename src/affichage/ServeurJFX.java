@@ -4,21 +4,30 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
-import serveur.GestionnaireSortie;
-import serveur.ServeurDessin;
-import serveur.Sortie;
+import serveur.*;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.FutureTask;
 
 public class ServeurJFX extends Application implements GestionnaireSortie {
     @Override
     public void start(Stage stage) throws Exception {
         ServeurDessin serveur = new ServeurDessin(this);
-        serveur.listen();
-        Platform.exit();
+        serveur.start();
     }
 
     @Override
     public Sortie creerSortie() {
-        return new FenetreJFX();
+        final FutureTask<FenetreJFX> task = new FutureTask<>(() -> new FenetreJFX());
+        Platform.runLater(task);
+
+        try {
+            return task.get();
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Impossible de creer une fenetre"); //TODO: exception
+        }
     }
 
     public static void main(String[] args) {

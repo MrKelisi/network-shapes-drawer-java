@@ -6,7 +6,7 @@ import java.net.Socket;
 
 //TODO: mettre des timeouts
 
-public class ServeurDessin {
+public class ServeurDessin extends Thread {
     private final static int PORT = 1952;
     private GestionnaireSortie gestionnaireSortie;
 
@@ -18,16 +18,26 @@ public class ServeurDessin {
         gestionnaireSortie = gestionnaire;
     }
 
-    public void listen() throws IOException {
-        ServerSocket serveur = new ServerSocket(PORT);
+    @Override
+    public void run() {
+        super.run();
 
-        System.out.println("Serveur démarré " + serveur);
+        ServerSocket serveur;
+        try {
+            serveur = new ServerSocket(PORT);
 
-        while(true) {
-            Socket client = serveur.accept();
+            System.out.println("Serveur démarré " + serveur);
 
-            GestionnaireClient gestionnaire = new GestionnaireClient(client, gestionnaireSortie.creerSortie());
-            gestionnaire.run();
+            while (true) {
+                Socket client = serveur.accept();
+
+                GestionnaireClient gestionnaire = new GestionnaireClient(client, gestionnaireSortie.creerSortie());
+                gestionnaire.start();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Impossible de démarrer le serveur " + e);
         }
     }
 }
