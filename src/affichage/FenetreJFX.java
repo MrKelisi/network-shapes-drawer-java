@@ -1,5 +1,6 @@
 package affichage;
 
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -44,7 +45,7 @@ public class FenetreJFX implements Sortie {
 
     @Override
     public void afficher() {
-        fenetre.showAndWait();
+        Platform.runLater(() -> fenetre.showAndWait());
     }
 
     @Override
