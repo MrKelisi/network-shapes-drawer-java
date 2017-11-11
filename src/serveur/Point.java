@@ -9,10 +9,16 @@ public class Point {
         this.y = y;
     }
 
+    /**
+     * @return Abscisse du point
+     */
     public double x() {
         return x;
     }
 
+    /**
+     * @return Ordonnée du point
+     */
     public double y() {
         return y;
     }

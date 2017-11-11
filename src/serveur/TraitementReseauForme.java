@@ -44,6 +44,11 @@ public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO
         return true;
     }
 
+    /**
+     * Traite une variable reçue
+     * @param nom Nom de la variable
+     * @param valeur Valeur
+     */
     private void traiterVariable(String nom, String valeur) {
         switch (nom) {
             case "couleur":
@@ -56,6 +61,10 @@ public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO
         }
     }
 
+    /**
+     * Affiche la forme sur la sortie
+     * @param sortie Destination
+     */
     private void afficher(Sortie sortie) {
         if(couleur == null) {
             throw new NullPointerException("Toutes les valeurs n'ont pas été données"); //TODO: meilleure exception
@@ -66,7 +75,16 @@ public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO
         afficherInterne(sortie);
     }
 
-
+    /**
+     * Traite une variable spécifique au type de forme
+     * @param nom Nom de la variable
+     * @param valeur Valeur
+     */
     protected abstract void traiterVariableInterne(String nom, String valeur);
+
+    /**
+     * Affiche la forme spécifique
+     * @param sortie Destination
+     */
     protected abstract void afficherInterne(Sortie sortie);
 }

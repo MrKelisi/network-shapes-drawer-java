@@ -31,7 +31,7 @@ public class FenetreJFX implements Sortie {
 
     /**
      * Affiche la forme avec les bonnes propriétés
-     * @param forme Forme à afficherInterne
+     * @param forme Forme à afficher
      */
     private void afficher(Shape forme) {
         if(couleur != null) {

@@ -27,5 +27,13 @@ public abstract class TraitementReseauCOR implements TraitementReseau {
         }
     }
 
+    /**
+     * Traitement interne des communications
+     * @param texte Première ligne reçue (nom de la forme)
+     * @param entree Buffer d'entrée
+     * @param sortie Destination des formes
+     * @return Vrai si l'instuction a été traitée
+     * @throws IOException si erreur de lecture
+     */
     protected abstract boolean traiterInterne(String texte, BufferedReader entree, Sortie sortie) throws IOException;
 }

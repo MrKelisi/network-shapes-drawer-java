@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+/**
+ * Classe qui gère un client
+ */
 public class GestionnaireClient extends Thread {
     private BufferedReader fluxEntrant;
     private Sortie sortie;

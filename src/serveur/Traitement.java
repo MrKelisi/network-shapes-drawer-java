@@ -11,6 +11,9 @@ public class Traitement { //TODO: j'avais vraiment aucune idée pour cette class
         traitement = new TraitementTriangle(traitement);
     }
 
+    /**
+     * @return L'instance de la chaîne de traitement
+     */
     public static Traitement instance() {
         return instance;
     }
