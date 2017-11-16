@@ -24,22 +24,4 @@ public class Variable {
             return null;
         }
     }
-
-    /**
-     * Retourne la couleur correspondante à la chaine donnée
-     * @param couleur Nom de la couleur
-     * @return Couleur ou null si elle n'a pas été trouvée
-     */
-    public static Couleur parseCouleur(String couleur) {
-        if(couleur == null) {
-            throw new NullPointerException("La couleur ne peut pas être null");
-        }
-
-        try {
-            return Couleur.valueOf(couleur.toUpperCase());
-        }
-        catch (IllegalArgumentException e) {
-            return null;
-        }
-    }
 }

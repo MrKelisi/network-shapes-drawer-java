@@ -13,7 +13,7 @@ public interface Sortie {
      * Définit la couleur de la prochaine forme
      * @param couleur Couleur de la prochaine forme
      */
-    void setCouleur(Couleur couleur);
+    void setCouleur(String couleur);
 
     /**
      * Trace un segment

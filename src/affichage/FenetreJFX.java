@@ -9,16 +9,14 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
-import serveur.Couleur;
 import serveur.Point;
 import serveur.Sortie;
 
 import java.util.ArrayList;
-import java.util.Timer;
 
 public class FenetreJFX implements Sortie {
     private Stage fenetre;
-    private Color couleur;
+    private String couleur;
     private Group root;
 
     public FenetreJFX() {
@@ -35,7 +33,7 @@ public class FenetreJFX implements Sortie {
      */
     private void afficher(Shape forme) {
         if(couleur != null) {
-            forme.setFill(couleur);
+            forme.setFill(Color.valueOf(couleur));
         }
 
         root.getChildren().add(forme);
@@ -49,36 +47,8 @@ public class FenetreJFX implements Sortie {
     }
 
     @Override
-    public void setCouleur(Couleur couleur) {
-        switch (couleur) { //TODO: ça marche mais c'est pas super extensible m'voyez
-            default:
-                this.couleur = null;
-                break;
-
-            case BLACK:
-                this.couleur = Color.BLACK;
-                break;
-
-            case BLUE:
-                this.couleur = Color.BLUE;
-                break;
-
-            case RED:
-                this.couleur = Color.RED;
-                break;
-
-            case GREEN:
-                this.couleur = Color.GREEN;
-                break;
-
-            case YELLOW:
-                this.couleur = Color.YELLOW;
-                break;
-
-            case CYAN:
-                this.couleur = Color.CYAN;
-                break;
-        }
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
     }
 
     @Override

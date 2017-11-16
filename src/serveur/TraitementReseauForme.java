@@ -6,7 +6,7 @@ import java.io.IOException;
 public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO: séparer le traitement des variables du stockage de la forme ?
     private final static String FIN_FORME = "FIN";
     private String nomForme;
-    private Couleur couleur;
+    private String couleur;
 
     public TraitementReseauForme(TraitementReseauCOR next, String nomForme) {
         super(next);
@@ -52,7 +52,7 @@ public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO
     private void traiterVariable(String nom, String valeur) {
         switch (nom) {
             case "couleur":
-                couleur = Variable.parseCouleur(valeur);
+                couleur = valeur;
                 break;
 
             default:

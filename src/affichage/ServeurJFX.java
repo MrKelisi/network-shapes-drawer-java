@@ -6,8 +6,6 @@ import javafx.stage.Stage;
 
 import serveur.*;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.FutureTask;
 
 public class ServeurJFX extends Application implements GestionnaireSortie {
