@@ -34,4 +34,9 @@ class TraitementCercle extends TraitementReseauForme {
 
         sortie.cercle(origine, rayon);
     }
+
+    @Override
+    public String toString() {
+        return "TraitementCercle{}";
+    }
 }

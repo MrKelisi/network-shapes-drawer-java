@@ -31,4 +31,9 @@ public class ServeurJFX extends Application implements GestionnaireSortie {
     public static void main(String[] args) {
         launch(args);
     }
+
+    @Override
+    public String toString() {
+        return "ServeurJFX{}";
+    }
 }

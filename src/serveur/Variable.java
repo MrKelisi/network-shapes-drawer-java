@@ -1,6 +1,6 @@
 package serveur;
 
-public class Variable {
+public abstract class Variable {
     /**
      * Lit la valeur d'une variable et renvoie le Point correspondant
      * @param valeur Valeur du point

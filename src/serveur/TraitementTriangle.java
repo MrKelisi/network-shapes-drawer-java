@@ -35,4 +35,9 @@ public class TraitementTriangle extends TraitementReseauForme {
 
         sortie.triangle(p1, p2, p3);
     }
+
+    @Override
+    public String toString() {
+        return "TraitementTriangle{}";
+    }
 }

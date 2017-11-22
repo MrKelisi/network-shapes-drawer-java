@@ -30,4 +30,9 @@ class TraitementSegment extends TraitementReseauForme {
 
         sortie.segment(debut, fin);
     }
+
+    @Override
+    public String toString() {
+        return "TraitementSegment{}";
+    }
 }

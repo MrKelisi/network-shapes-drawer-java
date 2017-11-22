@@ -9,6 +9,7 @@ import java.net.Socket;
 public class ServeurDessin extends Thread {
     private final static int PORT = 1952;
     private GestionnaireSortie gestionnaireSortie;
+    private ServerSocket serveur;
 
     public ServeurDessin(GestionnaireSortie gestionnaire) {
         if(gestionnaire == null) {
@@ -16,16 +17,21 @@ public class ServeurDessin extends Thread {
         }
 
         gestionnaireSortie = gestionnaire;
+
+        try {
+            serveur = new ServerSocket(PORT);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Impossible de démarrer le serveur " + e); //TODO: exception
+        }
     }
 
     @Override
     public void run() {
         super.run();
 
-        ServerSocket serveur;
         try {
-            serveur = new ServerSocket(PORT);
-
             System.out.println("Serveur démarré " + serveur);
 
             while (true) {
@@ -37,7 +43,15 @@ public class ServeurDessin extends Thread {
         }
         catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Impossible de démarrer le serveur " + e);
+            throw new RuntimeException("Impossible de démarrer le serveur " + e); //TODO: exception
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ServeurDessin{" +
+                "PORT=" + PORT + ", " +
+                "IP=" + serveur.getInetAddress() +
+                '}';
     }
 }

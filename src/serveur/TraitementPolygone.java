@@ -31,4 +31,9 @@ public class TraitementPolygone extends TraitementReseauForme {
 
         sortie.polygone(points);
     }
+
+    @Override
+    public String toString() {
+        return "TraitementPolygone{}";
+    }
 }

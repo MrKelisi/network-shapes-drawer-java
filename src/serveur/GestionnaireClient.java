@@ -45,4 +45,9 @@ public class GestionnaireClient extends Thread {
             System.out.println(e.toString());
         }
     }
+
+    @Override
+    public String toString() {
+        return "GestionnaireClient{}";
+    }
 }

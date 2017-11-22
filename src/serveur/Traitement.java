@@ -21,4 +21,9 @@ public class Traitement { //TODO: j'avais vraiment aucune idée pour cette class
     public TraitementReseauCOR traitement() {
         return traitement;
     }
+
+    @Override
+    public String toString() {
+        return "Traitement{}";
+    }
 }

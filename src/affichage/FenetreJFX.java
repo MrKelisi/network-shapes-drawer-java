@@ -95,4 +95,9 @@ public class FenetreJFX implements Sortie {
 
         afficher(polygone);
     }
+
+    @Override
+    public String toString() {
+        return "FenetreJFX{}";
+    }
 }
