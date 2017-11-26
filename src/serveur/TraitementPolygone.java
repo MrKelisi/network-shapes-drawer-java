@@ -30,6 +30,7 @@ public class TraitementPolygone extends TraitementReseauForme {
         }
 
         sortie.polygone(points);
+        points = new ArrayList<>(); //Réinitialiser le tableau de points une fois que le traitement d'un polygone est terminé
     }
 
     @Override
