@@ -37,6 +37,13 @@ public class TraitementTriangle extends TraitementReseauForme {
     }
 
     @Override
+    protected void reset() {
+        p1 = null;
+        p2 = null;
+        p3 = null;
+    }
+
+    @Override
     public String toString() {
         return "TraitementTriangle{}";
     }

@@ -32,6 +32,12 @@ class TraitementSegment extends TraitementReseauForme {
     }
 
     @Override
+    protected void reset() {
+        debut = null;
+        fin = null;
+    }
+
+    @Override
     public String toString() {
         return "TraitementSegment{}";
     }

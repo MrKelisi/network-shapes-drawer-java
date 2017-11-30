@@ -42,8 +42,7 @@ public class ServeurDessin extends Thread {
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("Impossible de démarrer le serveur " + e); //TODO: exception
+            System.out.println("Le serveur a été arrêté: " + e.getMessage());
         }
     }
 

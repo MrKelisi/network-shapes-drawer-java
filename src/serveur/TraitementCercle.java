@@ -36,6 +36,12 @@ class TraitementCercle extends TraitementReseauForme {
     }
 
     @Override
+    protected void reset() {
+        origine = null;
+        rayon = null;
+    }
+
+    @Override
     public String toString() {
         return "TraitementCercle{}";
     }

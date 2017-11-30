@@ -9,9 +9,13 @@ import serveur.*;
 import java.util.concurrent.FutureTask;
 
 public class ServeurJFX extends Application implements GestionnaireSortie {
+    private ServeurDessin serveur;
+
     @Override
     public void start(Stage stage) throws Exception {
-        ServeurDessin serveur = new ServeurDessin(this);
+        Platform.setImplicitExit(false);
+
+        serveur = new ServeurDessin(this);
         serveur.start();
     }
 

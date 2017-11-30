@@ -8,6 +8,7 @@ public abstract class TraitementReseauCOR implements TraitementReseau {
 
     public TraitementReseauCOR(TraitementReseauCOR next) {
         this.next = next;
+        reset();
     }
 
     @Override
@@ -25,6 +26,9 @@ public abstract class TraitementReseauCOR implements TraitementReseau {
         if(!traiterInterne(texte, entree, sortie) && next != null) {
             next.traiter(texte, entree, sortie);
         }
+        else {
+            reset();
+        }
     }
 
     /**
@@ -36,4 +40,9 @@ public abstract class TraitementReseauCOR implements TraitementReseau {
      * @throws IOException si erreur de lecture
      */
     protected abstract boolean traiterInterne(String texte, BufferedReader entree, Sortie sortie) throws IOException;
+
+    /**
+     * Remet à 0 les champs de la classe après son utilisation
+     */
+    protected abstract void reset();
 }
