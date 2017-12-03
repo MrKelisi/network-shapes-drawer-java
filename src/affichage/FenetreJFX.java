@@ -34,6 +34,7 @@ public class FenetreJFX implements Sortie {
     private void afficher(Shape forme) {
         if(couleur != null) {
             forme.setFill(Color.valueOf(couleur));
+            forme.setStroke(Color.valueOf(couleur));
         }
 
         root.getChildren().add(forme);
