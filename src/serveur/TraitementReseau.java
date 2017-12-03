@@ -1,5 +1,7 @@
 package serveur;
 
+import exception.FormeException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -10,6 +12,7 @@ public interface TraitementReseau {
      * @param entree Buffer d'entrée
      * @param sortie Destination des formes
      * @throws IOException si erreur de lecture
+     * @throws FormeException si la forme est invalide
      */
-    void traiter(String texte, BufferedReader entree, Sortie sortie) throws IOException;
+    void traiter(String texte, BufferedReader entree, Sortie sortie) throws IOException, FormeException;
 }

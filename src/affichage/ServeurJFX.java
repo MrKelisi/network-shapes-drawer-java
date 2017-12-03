@@ -1,5 +1,6 @@
 package affichage;
 
+import exception.CreationSortieException;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -20,7 +21,7 @@ public class ServeurJFX extends Application implements GestionnaireSortie {
     }
 
     @Override
-    public Sortie creerSortie() {
+    public Sortie creerSortie() throws CreationSortieException {
         final FutureTask<FenetreJFX> task = new FutureTask<>(() -> new FenetreJFX());
         Platform.runLater(task);
 
@@ -28,7 +29,7 @@ public class ServeurJFX extends Application implements GestionnaireSortie {
             return task.get();
         }
         catch (Exception e) {
-            throw new RuntimeException("Impossible de creer une fenetre"); //TODO: exception
+            throw new CreationSortieException("Impossible de creer une fenetre");
         }
     }
 

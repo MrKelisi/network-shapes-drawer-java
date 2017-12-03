@@ -1,5 +1,8 @@
 package serveur;
 
+import exception.FormeException;
+import exception.ParseException;
+
 import java.util.ArrayList;
 
 public class TraitementPolygone extends TraitementReseauForme {
@@ -14,18 +17,20 @@ public class TraitementPolygone extends TraitementReseauForme {
     protected void traiterVariableInterne(String nom, String valeur) {
         switch (nom) {
             case "point":
-                Point point = Variable.parsePoint(valeur); //TODO: mettre une exception pour éviter cette ligne
-                if(point != null) {
-                    points.add(point);
+                try {
+                    points.add(Variable.parsePoint(valeur));
+                }
+                catch (ParseException e) {
+
                 }
                 break;
         }
     }
 
     @Override
-    protected void afficherInterne(Sortie sortie) {
+    protected void afficherInterne(Sortie sortie) throws FormeException {
         if(points.size() < 3) {
-            throw new IllegalArgumentException("Le polygone a moins de 3 points"); //TODO: meilleure exception
+            throw new FormeException("Le polygone a moins de 3 points");
         }
 
         sortie.polygone(points);

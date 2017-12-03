@@ -1,6 +1,6 @@
 package serveur;
 
-public class Traitement { //TODO: j'avais vraiment aucune idée pour cette classe
+public class Traitement {
     private static Traitement instance = new Traitement();
     private TraitementReseauCOR traitement;
 

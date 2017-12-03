@@ -1,5 +1,7 @@
 package serveur;
 
+import exception.FormeException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -12,7 +14,7 @@ public abstract class TraitementReseauCOR implements TraitementReseau {
     }
 
     @Override
-    public void traiter(String texte, BufferedReader entree, Sortie sortie) throws IOException {
+    public void traiter(String texte, BufferedReader entree, Sortie sortie) throws IOException, FormeException {
         if(texte == null) {
             throw new NullPointerException("Le texte ne peut pas être null");
         }
@@ -38,8 +40,9 @@ public abstract class TraitementReseauCOR implements TraitementReseau {
      * @param sortie Destination des formes
      * @return Vrai si l'instuction a été traitée
      * @throws IOException si erreur de lecture
+     * @throws FormeException si la forme est invalide
      */
-    protected abstract boolean traiterInterne(String texte, BufferedReader entree, Sortie sortie) throws IOException;
+    protected abstract boolean traiterInterne(String texte, BufferedReader entree, Sortie sortie) throws IOException, FormeException;
 
     /**
      * Remet à 0 les champs de la classe après son utilisation

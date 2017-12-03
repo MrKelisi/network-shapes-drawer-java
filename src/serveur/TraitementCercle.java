@@ -1,5 +1,8 @@
 package serveur;
 
+import exception.FormeException;
+import exception.ParseException;
+
 class TraitementCercle extends TraitementReseauForme {
     private final static String NOM = "CERCLE";
     private Point origine;
@@ -13,7 +16,12 @@ class TraitementCercle extends TraitementReseauForme {
     protected void traiterVariableInterne(String nom, String valeur) {
         switch (nom) {
             case "origine":
-                origine = Variable.parsePoint(valeur);
+                try {
+                    origine = Variable.parsePoint(valeur);
+                }
+                catch (ParseException e) {
+
+                }
                 break;
 
             case "rayon":
@@ -27,9 +35,9 @@ class TraitementCercle extends TraitementReseauForme {
     }
 
     @Override
-    protected void afficherInterne(Sortie sortie) {
+    protected void afficherInterne(Sortie sortie) throws FormeException {
         if(origine == null || rayon == null) {
-            throw new NullPointerException("Pas assez de données"); //TODO: meilleure exception
+            throw new FormeException("L'origine ou le rayon n'ont pas été données.");
         }
 
         sortie.cercle(origine, rayon);

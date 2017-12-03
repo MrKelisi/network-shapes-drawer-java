@@ -1,10 +1,10 @@
 package serveur;
 
+import exception.CreationSortieException;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-//TODO: mettre des timeouts
 
 public class ServeurDessin extends Thread {
     private final static int PORT = 1952;
@@ -22,8 +22,7 @@ public class ServeurDessin extends Thread {
             serveur = new ServerSocket(PORT);
         }
         catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Impossible de démarrer le serveur " + e); //TODO: exception
+            throw new RuntimeException("Impossible de démarrer le serveur " + e);
         }
     }
 
@@ -34,11 +33,17 @@ public class ServeurDessin extends Thread {
         try {
             System.out.println("Serveur démarré " + serveur);
 
-            while (true) {
+            while(true) {
                 Socket client = serveur.accept();
 
-                GestionnaireClient gestionnaire = new GestionnaireClient(client, gestionnaireSortie.creerSortie());
-                gestionnaire.start();
+                try {
+                    GestionnaireClient gestionnaire = new GestionnaireClient(client, gestionnaireSortie.creerSortie());
+                    gestionnaire.start();
+                }
+                catch (CreationSortieException e) {
+                    System.out.println("Erreur de création de sortie: " + e.getMessage());
+                    client.close();
+                }
             }
         }
         catch (Exception e) {

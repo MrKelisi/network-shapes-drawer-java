@@ -1,5 +1,8 @@
 package serveur;
 
+import exception.FormeException;
+import exception.ParseException;
+
 class TraitementSegment extends TraitementReseauForme {
     private static final String NOM = "SEGMENT";
     private Point debut;
@@ -11,21 +14,26 @@ class TraitementSegment extends TraitementReseauForme {
 
     @Override
     protected void traiterVariableInterne(String nom, String valeur) {
-        switch (nom) {
-            case "debut":
-                debut = Variable.parsePoint(valeur);
-                break;
+        try {
+            switch (nom) {
+                case "debut":
+                    debut = Variable.parsePoint(valeur);
+                    break;
 
-            case "fin":
-                fin = Variable.parsePoint(valeur);
-                break;
+                case "fin":
+                    fin = Variable.parsePoint(valeur);
+                    break;
+            }
+        }
+        catch (ParseException e) {
+
         }
     }
 
     @Override
-    protected void afficherInterne(Sortie sortie) {
+    protected void afficherInterne(Sortie sortie) throws FormeException {
         if(debut == null || fin == null) {
-            throw new NullPointerException("Il manque des valeurs"); //TODO: meilleure exception
+            throw new FormeException("Le début ou la fin du segment n'a pas été donnée");
         }
 
         sortie.segment(debut, fin);

@@ -1,9 +1,11 @@
 package serveur;
 
+import exception.FormeException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO: séparer le traitement des variables du stockage de la forme ?
+public abstract class TraitementReseauForme extends TraitementReseauCOR {
     private final static String FIN_FORME = "FIN";
     private String nomForme;
     private String couleur;
@@ -19,7 +21,7 @@ public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO
     }
 
     @Override
-    protected boolean traiterInterne(String texte, BufferedReader entree, Sortie sortie) throws IOException {
+    protected boolean traiterInterne(String texte, BufferedReader entree, Sortie sortie) throws IOException, FormeException {
         if(!nomForme.equals(texte)) {
             return false;
         }
@@ -64,10 +66,11 @@ public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO
     /**
      * Affiche la forme sur la sortie
      * @param sortie Destination
+     * @throws FormeException si la forme est invalide
      */
-    private void afficher(Sortie sortie) {
+    private void afficher(Sortie sortie) throws FormeException {
         if(couleur == null) {
-            throw new NullPointerException("Toutes les valeurs n'ont pas été données"); //TODO: meilleure exception
+            throw new FormeException("La couleur n'a pas été donnée");
         }
 
         sortie.setCouleur(couleur);
@@ -85,6 +88,7 @@ public abstract class TraitementReseauForme extends TraitementReseauCOR { //TODO
     /**
      * Affiche la forme spécifique
      * @param sortie Destination
+     * @throws FormeException si la forme est invalide
      */
-    protected abstract void afficherInterne(Sortie sortie);
+    protected abstract void afficherInterne(Sortie sortie) throws FormeException;
 }
